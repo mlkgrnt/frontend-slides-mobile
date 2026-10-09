@@ -1,16 +1,26 @@
 # frontend-slides-mobile
 
-**移动端竖版卡片生产线** —— 一个遵循 Agent Skills 开放标准的 agent skill，
-兼容 WorkBuddy / DeepSeek Harness / Claude Code / Codex CLI 等。
+> **移动端竖版卡片生产线** —— 把任何内容（主题 / 文章 / 文档）变成手机竖版卡片，交付一组 PNG 图片 + 一个矢量 PDF。
 
-把任何内容（主题 / 文章 / 文档）变成**手机竖版卡片**，交付 **一组 PNG 图片 + 一个矢量 PDF**。
-不交付网页：终端产物就是图片和 PDF。
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Agent Skills](https://img.shields.io/badge/Agent_Skills-compatible-6E4AFF.svg)](#兼容性agent-skills-开放标准)
+[![Runtime](https://img.shields.io/badge/runtime-Chrome_%2B_Node-brightgreen.svg)](#快速开始)
+
+一个遵循 [Agent Skills 开放标准](https://code.claude.com/docs/en/skills)的 agent skill，
+兼容 WorkBuddy / DeepSeek Harness / Claude Code / Codex CLI 等。
+**不交付网页**：终端产物就是图片和 PDF。
 
 ```
 内容 ──► 卡片大纲 ──► deck.html（渲染源） ──► ┌ cards/01.png … NN.png
                                   │          └ deck.pdf（矢量，字体内嵌）
                                   └── Chrome headless（零第三方依赖）
 ```
+
+**目录**：[特性](#特性) · [兼容性](#兼容性agent-skills-开放标准) · [快速开始](#快速开始) ·
+[目录结构](#目录结构) · [工作原理](#工作原理) · [常见问题](#常见问题) · [字体](#字体) ·
+[开源协议](#开源协议) · [致谢](#致谢) · [贡献](#贡献)
+
+---
 
 ## 特性
 
@@ -22,12 +32,10 @@
   与**中文配字体**。
 - **开源中文字体库**：15 款精选（明朝 / 楷 / 黑 / 圆 / 手写 / 等宽 / 像素 / 标题美术），
   许可逐款核实、经 CDN 按需加载（**不内置字体包**），选字体同样是"看图挑"的流程。
-- **中文排版内置**：行高/字距/标点/中英混排间距/反斜体规则，写进生成规范。
+- **中文排版内置**：行高 / 字距 / 标点 / 中英混排间距 / 反斜体规则，写进生成规范。
 - **零第三方依赖渲染**：只用本机 Chrome / Chromium / Edge 命令行；
   单张截图 ≈1.4s，渲染结果字节级可复现。
-- **多端同源**：遵循 Agent Skills 开放标准（SKILL.md + name/description frontmatter），
-  同一份技能可直接用于 WorkBuddy / DeepSeek Harness / Claude Code / Codex CLI
-  等所有实现该标准的工具（详见下方「兼容性」）。
+- **多端同源**：同一份技能可直接用于所有实现 Agent Skills 标准的工具（详见下方）。
 
 ## 兼容性（Agent Skills 开放标准）
 
@@ -100,7 +108,7 @@ tools/
 examples/
 ├── demo-sleep/                 # 6 张卡完整示例（deck.html + cards/ + deck.pdf）
 └── font-showcase/              # 字体渲染对比示例（汇文明朝体 × 霞鹜文楷）
-upstream/                       # 上游参考副本（开发用）
+upstream/                       # 上游参考副本（开发用，见「开源协议」）
 ```
 
 ## 工作原理
@@ -111,6 +119,7 @@ upstream/                       # 上游参考副本（开发用）
 4. **校验**：脚本自动验证 PNG 宽高、PDF 页数/体积并报告。
 
 关键实测结论（完整见 `skill/references/render-pipeline.md`）：
+
 - 字体必须子集内嵌 → PDF 在任何设备显示一致；
 - 必须用独立 `--user-data-dir`（否则命令会被转交给用户已开的浏览器）；
 - headless Chrome **不能**渲染 PDF 预览（验证 PDF 用元数据而非截图）。
@@ -125,21 +134,62 @@ upstream/                       # 上游参考副本（开发用）
 | 换画布（9:16 等）？ | 改 deck.html 的 `--card-w/--card-h/--u` 三个变量 |
 | 想改文案/颜色？ | 改 `deck.html` 后重跑渲染，30 秒内出新版 |
 
-## 字体与许可
+## 字体
 
 - 本仓库**不内置任何字体文件**；渲染时按需从 CDN（Google Fonts / 中文网字计划·jsDelivr）
   下载，由浏览器缓存复用。
-- `skill/references/font-library.md` 收录的 15 款字体均逐款核查过许可：
-  **SIL OFL 系优先**；"作者声明免费商用"类必须明文允许嵌入电子文档（PDF 会嵌入字体子集）。
+- [`skill/references/font-library.md`](skill/references/font-library.md) 收录的 15 款字体
+  均逐款核查过许可：**SIL OFL 系优先**；"作者声明免费商用"类必须明文允许嵌入电子文档
+  （PDF 会嵌入字体子集）。
 - 明确**排除**的类别：企业品牌字体（条款单方声明、可能变更）；
   "免费商用但限制嵌入"的字体（与 PDF 嵌入冲突）。细节见该文档 §0。
 
-## 上游与许可
+## 开源协议
 
-本项目在设计与风格资产上**改编自 [zarazhangrui/frontend-slides](https://github.com/zarazhangrui/frontend-slides)**
-（MIT）：核心哲学（show-don't-tell、反 AI 俗套、渐进式披露）、12 个风格预设、
-34 个 bold 模板基因。本项目的差异：**竖版移动优先 · 静态产物（PNG+PDF）· 中文排版系统 ·
-零依赖渲染管线 · 多 harness 兼容（Agent Skills 标准）**。
+### 本项目
 
-`upstream/` 目录是上游仓库的参考副本，其许可证见 `upstream/LICENSE`（MIT, © 2025 Zara Zhang）。
-本项目自身同样以 MIT 发布，见 `LICENSE`。
+本项目以 **MIT License** 发布，全文见 [`LICENSE`](LICENSE)：
+可自由使用、修改、分发（含商用），只需保留版权声明与许可声明。
+
+### 第三方内容归属
+
+本仓库包含或依赖以下第三方内容，各自的版权与许可以其来源为准：
+
+| 内容 | 来源 | 许可 |
+| --- | --- | --- |
+| 风格资产（12 个风格预设、34 个模板基因，经竖版转译与重组） | [zarazhangrui/frontend-slides](https://github.com/zarazhangrui/frontend-slides) | MIT · © 2025 Zara Zhang |
+| `upstream/`（上游参考副本，仅开发用） | 同上 | 上游版权声明见 [`upstream/LICENSE`](upstream/LICENSE) |
+| 中文字体（**不随本仓库分发**，运行时从第三方 CDN 按需加载） | 各字体作者（霞鹜 LXGW、atelierAnchor、特里王、璇玑造字、猫啃网等，完整清单见 [font-library.md](skill/references/font-library.md)） | SIL OFL 1.1 为主；"作者声明免费商用"类均明文允许嵌入电子文档 |
+
+### 字体授权说明
+
+字体文件**不包含**在本仓库中，其授权亦不属于本项目许可范围。渲染时由浏览器从
+[Google Fonts](https://fonts.google.com/) 与
+[中文网字计划](https://chinese-font.netlify.app/)（jsDelivr CDN）下载。
+本项目对字体库的收录经过逐款核查，但**不构成法律意见**——
+涉及商业用途时，请自行复核对应字体的许可条款原文。
+
+## 致谢
+
+- [@zarazhangrui](https://github.com/zarazhangrui) —— frontend-slides：
+  本项目的设计哲学与风格资产之源（show-don't-tell、反 AI 俗套、渐进式披露）
+- 字体作者与平台：
+  - [霞鹜系列 · LXGW](https://github.com/lxgw)（文楷 / 漫黑 / 等宽屏幕版）、
+    [atelierAnchor](https://github.com/atelier-anchor)（得意黑）
+  - 特里王（汇文明朝体、京华老宋体）、[GuiWonder](https://github.com/GuiWonder)（月星楷）、
+    璇玑造字（朱雀仿宋）、猫啃网（什锦黑、珠圆体）、Buernia（铁蒺藜）、
+    [Maple Mono Project](https://github.com/subframe7536/maple-font)、diaowinner（QuanPixel）
+  - [中文网字计划](https://github.com/KonghaYao/chinese-free-web-font-storage) ——
+    字体分包与 CDN 基础设施；[ZeoSeven Fonts](https://fonts.zeoseven.com/) —— 字体调研渠道
+- Adobe / Google（思源宋体、思源黑体）
+
+## 贡献
+
+欢迎 Issue 与 PR。几条约定：
+
+- 修改 `skill/` 下的内容后，本地跑 `node tools/install.mjs` 同步安装，
+  并对受影响的流程做一次**实际渲染验证**（不是只看代码）；
+- 往字体库新增字体前，先过
+  [`font-library.md` §0](skill/references/font-library.md) 的核查清单——
+  许可必须明确允许嵌入电子文档；
+- 提交渲染相关改动时，附一张实际渲染出的测试卡（图片或 PDF）。
