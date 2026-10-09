@@ -1,6 +1,7 @@
 # frontend-slides-mobile
 
-**移动端竖版卡片生产线** —— 一个给 WorkBuddy / DeepSeek Harness 使用的 agent skill。
+**移动端竖版卡片生产线** —— 一个遵循 Agent Skills 开放标准的 agent skill，
+兼容 WorkBuddy / DeepSeek Harness / Claude Code / Codex CLI 等。
 
 把任何内容（主题 / 文章 / 文档）变成**手机竖版卡片**，交付 **一组 PNG 图片 + 一个矢量 PDF**。
 不交付网页：终端产物就是图片和 PDF。
@@ -24,17 +25,37 @@
 - **中文排版内置**：行高/字距/标点/中英混排间距/反斜体规则，写进生成规范。
 - **零第三方依赖渲染**：只用本机 Chrome / Chromium / Edge 命令行；
   单张截图 ≈1.4s，渲染结果字节级可复现。
-- **双端同源**：同一份 `SKILL.md` 同时兼容 WorkBuddy（`~/.workbuddy/skills`）与
-  DeepSeek Harness（`~/.dsh/skills`，目录束约定）。
+- **多端同源**：遵循 Agent Skills 开放标准（SKILL.md + name/description frontmatter），
+  同一份技能可直接用于 WorkBuddy / DeepSeek Harness / Claude Code / Codex CLI
+  等所有实现该标准的工具（详见下方「兼容性」）。
+
+## 兼容性（Agent Skills 开放标准）
+
+本 skill 遵循 [Agent Skills 开放标准](https://code.claude.com/docs/en/skills)
+（`SKILL.md` + `name`/`description` frontmatter + `scripts/`·`references/`·`assets/`
+支持目录），各工具**零改动兼容**：
+
+| 工具 | 用户级安装位置 | 说明 |
+| --- | --- | --- |
+| WorkBuddy | `~/.workbuddy/skills/` | 本项目的主要开发环境 |
+| DeepSeek Harness | `~/.dsh/skills/` | 源码确认的扫描位置；它同时也扫描 `~/.agents/skills/` |
+| Claude Code | `~/.claude/skills/` | 官方 Skills 机制，frontmatter 与目录结构同构 |
+| Codex CLI | `~/.agents/skills/` | 官方文档指定的用户级位置 |
+| 其他工具（Cursor 等） | 见各自文档 | 凡实现 SKILL.md 标准的工具即可使用 |
+
+此外本 skill 是 **agent-neutral** 的：全部依赖只有 node 与本机 Chrome 命令行，
+不调用任何平台专有工具——任何具备文件系统与 shell 的 agent 都能执行。
+
+`node tools/install.mjs` 会自动检测本机已安装的 agent 并逐一安装（未检测到的自动跳过）。
 
 ## 快速开始
 
 ### 1. 安装
 
 ```bash
-node tools/install.mjs            # 复制模式：装到 WorkBuddy + dsh 两处
-node tools/install.mjs --link     # 开发模式：目录链接（改源码即时生效）
-node tools/install.mjs --only=dsh # 只装某一端
+node tools/install.mjs               # 自动检测并安装到本机全部 agent（见「兼容性」表）
+node tools/install.mjs --link        # 开发模式：目录链接（改源码即时生效）
+node tools/install.mjs --only=claude # 强制只装指定目标（workbuddy|dsh|claude|agents）
 ```
 
 ### 2. 使用（对话触发）
@@ -118,7 +139,7 @@ upstream/                       # 上游参考副本（开发用）
 本项目在设计与风格资产上**改编自 [zarazhangrui/frontend-slides](https://github.com/zarazhangrui/frontend-slides)**
 （MIT）：核心哲学（show-don't-tell、反 AI 俗套、渐进式披露）、12 个风格预设、
 34 个 bold 模板基因。本项目的差异：**竖版移动优先 · 静态产物（PNG+PDF）· 中文排版系统 ·
-零依赖渲染管线 · 双 harness 兼容**。
+零依赖渲染管线 · 多 harness 兼容（Agent Skills 标准）**。
 
 `upstream/` 目录是上游仓库的参考副本，其许可证见 `upstream/LICENSE`（MIT, © 2025 Zara Zhang）。
 本项目自身同样以 MIT 发布，见 `LICENSE`。

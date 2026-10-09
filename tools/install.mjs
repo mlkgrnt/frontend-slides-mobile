@@ -3,14 +3,20 @@
  * install.mjs — 把 frontend-slides-mobile skill 安装到本机各 agent 环境
  *
  * 用法（在仓库根目录运行）：
- *   node tools/install.mjs                # 安装到 WorkBuddy + DeepSeek Harness（复制模式）
- *   node tools/install.mjs --link         # 开发模式：创建目录链接，改源码即时生效
- *   node tools/install.mjs --only=dsh     # 只装指定目标（workbuddy | dsh）
+ *   node tools/install.mjs                # 自动检测并安装到全部已安装的 agent：
+ *                                         #   WorkBuddy / DeepSeek Harness / Claude Code / Codex
+ *   node tools/install.mjs --link         # 开发模式：目录链接，改源码即时生效
+ *   node tools/install.mjs --only=claude  # 强制只装指定目标（即使未检测到该 agent）
  *   node tools/install.mjs --dry-run      # 只做检查，不实际写入
  *
+ * 兼容性（依据 Agent Skills 开放标准，各家官方文档确认的用户级位置）：
+ *   WorkBuddy        ~/.workbuddy/skills/
+ *   DeepSeek Harness ~/.dsh/skills/（源码确认；也扫 ~/.agents/skills）
+ *   Claude Code      ~/.claude/skills/
+ *   Codex CLI        ~/.agents/skills/（官方文档指定的用户级位置）
+ *
  * 说明：
- * - 两套环境都遵循「<skills 根>/<skill 名>/SKILL.md」的目录束约定，
- *   SKILL.md 的 frontmatter 只需 name + description（两端通用）。
+ * - SKILL.md 的 frontmatter 只依赖 name + description（各标准实现通用）。
  * - 目标已存在时，旧目录会被重命名为 <名字>.bak-<时间戳>（不删除，安全回退）。
  * - --link 模式依赖目录软化链接（Windows 用 junction，无需管理员权限）。
  *   注意：链接模式下移动/删除本仓库会导致已安装的 skill 失效，届时重装即可。
@@ -34,11 +40,24 @@ const opt = {
   only: (args.find(a => a.startsWith('--only=')) ?? '').split('=')[1] || null,
 }
 
-// 本机已知的 skills 根目录（可按需增删）
+// 本机已知的 agent skills 根目录（可按需增删）
+// 依据：Agent Skills 开放标准（SKILL.md + name/description frontmatter），
+// 各家官方文档确认的用户级位置：
+//   WorkBuddy        ~/.workbuddy/skills/
+//   DeepSeek Harness ~/.dsh/skills/（源码确认；也扫 ~/.agents/skills）
+//   Claude Code      ~/.claude/skills/
+//   Codex CLI        ~/.agents/skills/（官方文档指定的用户级位置）
+// detect：该 agent 的配置根，用于判断"用户在用它"；不存在则默认跳过。
 const targets = [
-  { key: 'workbuddy', label: 'WorkBuddy', dir: path.join(os.homedir(), '.workbuddy', 'skills') },
-  { key: 'dsh', label: 'DeepSeek Harness', dir: path.join(os.homedir(), '.dsh', 'skills') },
-]
+  { key: 'workbuddy', label: 'WorkBuddy', detect: '.workbuddy', dir: ['.workbuddy', 'skills'] },
+  { key: 'dsh', label: 'DeepSeek Harness', detect: '.dsh', dir: ['.dsh', 'skills'] },
+  { key: 'claude', label: 'Claude Code', detect: '.claude', dir: ['.claude', 'skills'] },
+  { key: 'agents', label: 'Codex CLI / 通用 Agent Skills', detect: '.codex', dir: ['.agents', 'skills'] },
+].map(t => ({
+  ...t,
+  detectPath: path.join(os.homedir(), t.detect),
+  dirPath: path.join(os.homedir(), ...t.dir),
+}))
 
 // ── 1) 源自检 ──
 function selfCheck() {
@@ -63,12 +82,12 @@ function selfCheck() {
 
 // ── 2) 安装单个目标 ──
 function installOne(t) {
-  const dest = path.join(t.dir, skillName)
+  const dest = path.join(t.dirPath, skillName)
   const status = { target: t.label, dest, ok: false, action: '', note: '' }
 
   if (opt.dryRun) { status.action = 'dry-run'; status.ok = true; return status }
 
-  fs.mkdirSync(t.dir, { recursive: true })
+  fs.mkdirSync(t.dirPath, { recursive: true })
 
   // 旧版本备份（改名而非删除）
   if (fs.existsSync(dest)) {
@@ -108,10 +127,20 @@ if (errs.length) {
 }
 console.log('✓ 源自检通过（frontmatter / 支持文件）\n')
 
-const picked = targets.filter(t => !opt.only || t.key === opt.only)
+let picked = targets.filter(t => !opt.only || t.key === opt.only)
 if (!picked.length) {
   console.error(`✗ --only=${opt.only} 不匹配（可选：${targets.map(t => t.key).join(' | ')}）`)
   process.exit(1)
+}
+
+// 默认模式：只装"检测到已安装"的 agent；--only 时无条件安装
+const skipped = []
+if (!opt.only) {
+  picked = picked.filter(t => {
+    if (fs.existsSync(t.detectPath)) return true
+    skipped.push(t)
+    return false
+  })
 }
 
 let failed = 0
@@ -130,6 +159,11 @@ for (const t of picked) {
     failed++
     console.log(`✗ ${r.target} — ${e.message}`)
   }
+}
+
+if (skipped.length) {
+  console.log('\n跳过（未检测到该 agent）：')
+  for (const t of skipped) console.log(`  - ${t.label}（如需强制安装：--only=${t.key}）`)
 }
 
 console.log('\n完成。使用方式：')
