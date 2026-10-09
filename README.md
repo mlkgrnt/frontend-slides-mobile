@@ -171,6 +171,8 @@ upstream/                       # 上游参考副本（开发用，见「开源�
 
 ## 致谢
 
+- **AI 协作**：本项目的代码与文档由 **DeepSeek V4.1 Flash** 以智能体形式在
+  [WorkBuddy](https://www.workbuddy.cn) 中编写完成 —— `Co-Authored-By: DeepSeek V4.1 Flash`
 - [@zarazhangrui](https://github.com/zarazhangrui) —— frontend-slides：
   本项目的设计哲学与风格资产之源（show-don't-tell、反 AI 俗套、渐进式披露）
 - 字体作者与平台：
