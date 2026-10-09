@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>睡眠修复 · 知识卡片</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+/* ============ [1] 舞台 ============ */
+:root {
+  --card-w: 1080px; --card-h: 1440px; --u: 1;
+  --fs-display: calc(116px * var(--u));
+  --fs-h1: calc(78px * var(--u));
+  --fs-h2: calc(52px * var(--u));
+  --fs-body: calc(38px * var(--u));
+  --fs-body-sm: calc(32px * var(--u));
+  --fs-meta: calc(25px * var(--u));
+  --fs-num: calc(132px * var(--u));
+  --pad: calc(96px * var(--u));
+}
+
+/* ============ [2] 风格层：Blue Professional（钴蓝专业） ============ */
+:root {
+  --bg: #FDFAE7;            /* 奶油纸 */
+  --primary: #1E2BFA;       /* 电钴蓝 */
+  --fg: #111111;
+  --fg-muted: #6B6B6B;
+  --card-fill: rgba(30,43,250,0.05);
+  --card-border: rgba(30,43,250,0.22);
+  --font-display: "Space Grotesk", "Noto Sans SC", sans-serif;
+  --font-body: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "Space Grotesk", "Noto Sans SC", sans-serif;
+}
+
+/* ============ [3] 基础 ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: #555; }
+body { font-family: var(--font-body); }
+body.multi { display: flex; flex-direction: column; align-items: center; gap: 48px; padding: 48px 0; }
+body.single { background: transparent; }
+body.single .card { display: none; }
+body.single .card.active { display: flex; }
+
+.card {
+  width: var(--card-w); height: var(--card-h);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  background: var(--bg); color: var(--fg);
+}
+.pad { padding: var(--pad); flex: 1; display: flex; flex-direction: column; }
+.pad.mid { justify-content: center; }
+.pad.between { justify-content: space-between; }
+
+.kicker { font-family: var(--font-mono); font-size: var(--fs-meta); letter-spacing: 0.28em; text-transform: uppercase; color: var(--primary); font-weight: 500; }
+.display { font-family: var(--font-display); font-size: var(--fs-display); line-height: 1.24; font-weight: 900; letter-spacing: -0.01em; }
+.h1 { font-family: var(--font-display); font-size: var(--fs-h1); line-height: 1.32; font-weight: 900; }
+.h2 { font-family: var(--font-display); font-size: var(--fs-h2); line-height: 1.4; font-weight: 700; }
+.body { font-size: var(--fs-body); line-height: 1.72; }
+.body-sm { font-size: var(--fs-body-sm); line-height: 1.68; color: var(--fg-muted); }
+.meta { font-family: var(--font-mono); font-size: var(--fs-meta); letter-spacing: 0.12em; color: var(--fg-muted); }
+em { font-style: normal; color: var(--primary); }
+.card-foot { display: flex; justify-content: space-between; align-items: center; padding: calc(36px * var(--u)) var(--pad) calc(52px * var(--u)); }
+
+/* 组件 */
+.bullets { list-style: none; display: flex; flex-direction: column; gap: calc(46px * var(--u)); margin-top: calc(72px * var(--u)); }
+.bullets li { font-size: var(--fs-body); line-height: 1.72; padding-left: calc(56px * var(--u)); position: relative; }
+.bullets li::before { content: ""; position: absolute; left: 0; top: calc(0.6em - 13px * var(--u)); width: calc(26px * var(--u)); height: calc(26px * var(--u)); background: var(--primary); transform: rotate(45deg); }
+.bullets strong { color: var(--primary); font-weight: 700; }
+
+.stats { display: flex; flex-direction: column; gap: calc(36px * var(--u)); margin-top: calc(64px * var(--u)); }
+.stat { background: var(--card-fill); border: 1.5px solid var(--card-border); border-radius: calc(18px * var(--u)); padding: calc(44px * var(--u)) calc(52px * var(--u)); display: flex; align-items: baseline; gap: calc(44px * var(--u)); }
+.stat-num { font-family: var(--font-display); font-size: calc(88px * var(--u)); font-weight: 700; color: var(--primary); line-height: 1; min-width: calc(300px * var(--u)); }
+.stat-cap { font-size: var(--fs-body-sm); line-height: 1.62; }
+
+.steps { list-style: none; display: flex; flex-direction: column; gap: calc(40px * var(--u)); margin-top: calc(64px * var(--u)); }
+.steps li { display: flex; gap: calc(36px * var(--u)); align-items: flex-start; font-size: var(--fs-body); line-height: 1.68; }
+.step-n { font-family: var(--font-mono); font-size: calc(40px * var(--u)); font-weight: 700; color: #fff; background: var(--primary); width: calc(92px * var(--u)); height: calc(92px * var(--u)); border-radius: calc(20px * var(--u)); display: flex; align-items: center; justify-content: center; flex: none; }
+.steps strong { display: block; color: var(--primary); }
+
+.orn { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.ring { position: absolute; border-radius: 50%; border: 2.5px solid var(--primary); }
+.rule { width: calc(220px * var(--u)); height: calc(8px * var(--u)); background: var(--primary); }
+
+/* 深色卡（statement） */
+.card.dark { background: var(--primary); color: #FDFAE7; }
+.card.dark .kicker { color: rgba(253,250,231,0.65); }
+.card.dark .meta { color: rgba(253,250,231,0.55); }
+
+/* ============ [5] 打印 ============ */
+@page { size: var(--card-w) var(--card-h); margin: 0; }
+@media print {
+  html, body { background: #fff; }
+  body.multi { display: block; padding: 0; gap: 0; }
+  .card { break-inside: avoid; break-after: page; }
+  .card:last-child { break-after: auto; }
+}
+</style>
+</head>
+<body class="multi">
+
+  <!-- 卡 1 · 封面 -->
+  <section class="card" data-index="1">
+    <div class="orn">
+      <div class="ring" style="width: calc(560px * var(--u)); height: calc(560px * var(--u)); right: calc(-180px * var(--u)); top: calc(-160px * var(--u)); opacity: 0.9;"></div>
+      <div class="ring" style="width: calc(240px * var(--u)); height: calc(240px * var(--u)); right: calc(120px * var(--u)); bottom: calc(180px * var(--u)); opacity: 0.35; border-width: calc(10px * var(--u)); border-color: rgba(30,43,250,0.5);"></div>
+    </div>
+    <div class="pad between">
+      <div class="kicker">SLEEP · 睡眠科学</div>
+      <div>
+        <h1 class="display">为什么睡够<br>7 小时<br>这么难</h1>
+        <div class="rule" style="margin-top: calc(72px * var(--u));"></div>
+        <p class="body-sm" style="margin-top: calc(48px * var(--u)); font-size: calc(36px * var(--u));">关于睡眠债的 5 件事</p>
+      </div>
+      <div></div>
+    </div>
+    <div class="card-foot">
+      <span class="meta">SLEEP · 01</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+  <!-- 卡 2 · 三个误解 -->
+  <section class="card" data-index="2">
+    <div class="pad">
+      <div class="kicker">误解</div>
+      <h2 class="h1" style="margin-top: calc(40px * var(--u));">你可能信过的<br>三个误解</h2>
+      <ul class="bullets">
+        <li><strong>睡前喝酒助眠</strong> —— 酒精让你更快入睡，却会毁掉后半夜的深睡。</li>
+        <li><strong>周末补觉还债</strong> —— 补觉只缓解困意，无法恢复一周累积的认知损伤。</li>
+        <li><strong>躺够 8 小时就行</strong> —— 关键是睡足完整周期，而不是卧床时长。</li>
+      </ul>
+    </div>
+    <div class="card-foot">
+      <span class="meta">SLEEP · 02</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+  <!-- 卡 3 · 数据 -->
+  <section class="card" data-index="3">
+    <div class="pad">
+      <div class="kicker">数据</div>
+      <h2 class="h1" style="margin-top: calc(40px * var(--u));">三个值得记住<br>的数字</h2>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">7–9h</div><div class="stat-cap">成年人每晚的建议睡眠时长</div></div>
+        <div class="stat"><div class="stat-num">1/3</div><div class="stat-cap">成年人长期达不到这个标准</div></div>
+        <div class="stat"><div class="stat-num">+24%</div><div class="stat-cap">春季时钟拨快 1 小时后的心梗发生率</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <span class="meta">SLEEP · 03</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+  <!-- 卡 4 · 三个调整 -->
+  <section class="card" data-index="4">
+    <div class="pad">
+      <div class="kicker">行动</div>
+      <h2 class="h1" style="margin-top: calc(40px * var(--u));">今晚就能做的<br>三个调整</h2>
+      <ol class="steps">
+        <li><span class="step-n">01</span><div><strong>固定起床时间</strong>比固定入睡时间更重要，先锚住生物钟。</div></li>
+        <li><span class="step-n">02</span><div><strong>睡前 90 分钟调暗光线</strong>让褪黑素按自己的节奏上来。</div></li>
+        <li><span class="step-n">03</span><div><strong>躺 20 分钟睡不着就起身</strong>别让床和清醒建立联结。</div></li>
+      </ol>
+    </div>
+    <div class="card-foot">
+      <span class="meta">SLEEP · 04</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+  <!-- 卡 5 · 金句（深色） -->
+  <section class="card dark" data-index="5">
+    <div class="pad mid">
+      <div class="kicker">关键认知</div>
+      <h2 class="display" style="margin-top: calc(64px * var(--u)); line-height: 1.32;">你无法和睡眠<br>讨价还价</h2>
+      <p style="margin-top: calc(88px * var(--u)); font-size: calc(44px * var(--u)); line-height: 1.7; color: rgba(253,250,231,0.62); padding-left: calc(44px * var(--u)); border-left: calc(6px * var(--u)) solid rgba(253,250,231,0.38);">但可以和它的<br>节奏合作。</p>
+    </div>
+    <div class="card-foot">
+      <span class="meta">SLEEP · 05</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+  <!-- 卡 6 · 收尾 -->
+  <section class="card" data-index="6">
+    <div class="orn">
+      <div class="ring" style="width: calc(420px * var(--u)); height: calc(420px * var(--u)); left: calc(-160px * var(--u)); bottom: calc(-140px * var(--u)); opacity: 0.5;"></div>
+    </div>
+    <div class="pad mid">
+      <div class="kicker">从今晚开始</div>
+      <h2 class="h1" style="margin-top: calc(48px * var(--u));">先定一个<br>固定的起床时间</h2>
+      <p class="body-sm" style="margin-top: calc(56px * var(--u)); font-size: calc(34px * var(--u));">一周之后，你会知道自己的生物钟在哪。</p>
+    </div>
+    <div class="card-foot">
+      <span class="meta">SLEEP · 06</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+<script>
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card[data-index]'));
+  var pad2 = function (n) { return String(n).padStart(2, '0'); };
+  cards.forEach(function (c, i) {
+    var pg = c.querySelector('[data-pg]');
+    if (pg) pg.textContent = pad2(i + 1);
+  });
+  document.querySelectorAll('[data-pg-total]').forEach(function (el) { el.textContent = pad2(cards.length); });
+  var params = new URLSearchParams(location.search);
+  var n = parseInt(params.get('p'), 10);
+  if (n > 0) {
+    document.body.className = 'single';
+    var target = document.querySelector('.card[data-index="' + n + '"]');
+    if (target) target.classList.add('active');
+  }
+})();
+</script>
+</body>
+</html>

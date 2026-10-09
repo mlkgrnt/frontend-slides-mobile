@@ -1,0 +1,10 @@
+# 保持脚本与文档的换行风格一致（Windows 检出时脚本不能变成 CRLF）
+.gitattributes text eol=lf
+*.mjs text eol=lf
+*.js text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+* text=auto

@@ -1,0 +1,885 @@
+[
+  {
+    "pkg": "blbbsxt",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "白路棒棒手写体"
+    ],
+    "family": "bailubangbangshouxieti",
+    "copyright": "copyright: bailu",
+    "cssDir": "/dist/白路棒棒手写体"
+  },
+  {
+    "pkg": "bwckkt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "白无常可可体-Bold",
+      "白无常可可体-Light",
+      "白无常可可体-Regular"
+    ],
+    "family": "BWCKKT",
+    "copyright": "Copyright(c) 2021 www.psc4d.cn. All rights reserved.",
+    "cssDir": "/dist/白无常可可体-Regular"
+  },
+  {
+    "pkg": "bxzlzt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "标小智龙珠体"
+    ],
+    "family": "LogoSC LongZhuTi",
+    "copyright": "Copyright 2022-2023 LogoSC LongZhuTi Project Authors. 标小智 is a registered trademark of 上海婷平网络科技有限公司. Copyright 2020 The RocknRoll Project Authors (https://github.com/fontworks-fonts/RocknRoll)",
+    "cssDir": "/dist/标小智龙珠体"
+  },
+  {
+    "pkg": "cef",
+    "version": "3.0.0",
+    "weights": [
+      "CEFFontsCJK-Regular",
+      "CEFFontsCJKMono-Regular",
+      "index.json"
+    ],
+    "family": "快去寫作業-CJK",
+    "copyright": "派對大魔王(PartyBoss) 版權所有",
+    "cssDir": "/dist/CEFFontsCJK-Regular"
+  },
+  {
+    "pkg": "cezkzdbs",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "仓耳周珂正大榜书"
+    ],
+    "family": "TsangerZhoukeZhengdabangshu",
+    "copyright": "Copyright © Beijing Tsanger Character Technology Co., Ltd.. All rights reserved.",
+    "cssDir": "/dist/仓耳周珂正大榜书"
+  },
+  {
+    "pkg": "cqscbbt",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "YunFengZiKuZhongQingShanChengBangBangTi-2"
+    ],
+    "family": "YunFengchongqingbangbangti",
+    "copyright": "云峰字库",
+    "cssDir": "/dist/YunFengZiKuZhongQingShanChengBangBangTi-2"
+  },
+  {
+    "pkg": "crgkk",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "程荣光刻楷"
+    ],
+    "family": "chengrongguangke",
+    "copyright": "ChengRong",
+    "cssDir": "/dist/程荣光刻楷"
+  },
+  {
+    "pkg": "cubic",
+    "version": "3.0.0",
+    "weights": [
+      "Cubic",
+      "index.json"
+    ],
+    "family": "Cubic 11",
+    "copyright": "[Cubic 11]",
+    "cssDir": "/dist/Cubic"
+  },
+  {
+    "pkg": "dyh",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "SmileySans-Oblique"
+    ],
+    "family": "Smiley Sans Oblique",
+    "copyright": "Copyright © 2022–2024 atelierAnchor. All rights reserved.",
+    "cssDir": "/dist/SmileySans-Oblique"
+  },
+  {
+    "pkg": "dymh",
+    "version": "3.0.0",
+    "weights": [
+      "DouyinSansBold",
+      "index.json"
+    ],
+    "family": "Douyin Sans",
+    "copyright": "Copyright(c) Beijing Founder Electronics Co.,Ltd. ±±æ©±±¥Û∑Ω’˝µÁ◊””–œﬁπ´Àæ",
+    "cssDir": "/dist/DouyinSansBold"
+  },
+  {
+    "pkg": "dyzgt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "斗鱼追光体"
+    ],
+    "family": "DOUYU Font",
+    "copyright": "2019 DOUYU",
+    "cssDir": "/dist/斗鱼追光体"
+  },
+  {
+    "pkg": "fbdzt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "飞波正点体V2_1"
+    ],
+    "family": "Feibo Zheng Dots",
+    "copyright": "(c) Copyright Huang Fei Bo 2024",
+    "cssDir": "/dist/飞波正点体V2_1"
+  },
+  {
+    "pkg": "fhst",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "飞花宋体"
+    ],
+    "family": "FlyFlowerSong",
+    "copyright": "Macintosh en FontFamilyName FlyFlowerSong",
+    "cssDir": "/dist/飞花宋体"
+  },
+  {
+    "pkg": "GuanKiapTsingKhai",
+    "error": "HTTP 404"
+  },
+  {
+    "pkg": "hcqyt",
+    "version": "2.0.0",
+    "weights": [
+      "ChillRoundFBold",
+      "ChillRoundFRegular",
+      "index.json"
+    ],
+    "family": "_____",
+    "copyright": "{Kosugi Maru}{Justfont}{Maoken}{ChillType} Copyright(C)2010 MOTOYA CO.,LTD.",
+    "cssDir": "/dist/ChillRoundFRegular"
+  },
+  {
+    "pkg": "hldqjt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "qiji-fallback"
+    ],
+    "family": "QIJIFALLBACK",
+    "copyright": "Copyright (c) 2020, Lingdong Huang",
+    "cssDir": "/dist/qiji-fallback"
+  },
+  {
+    "pkg": "hlxsjt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "鸿雷行书简体"
+    ],
+    "family": "hongleixingshu",
+    "copyright": "Copyright ?2022 by ÁÖ? All rights reserved",
+    "cssDir": "/dist/鸿雷行书简体"
+  },
+  {
+    "pkg": "hqzmt",
+    "version": "3.0.0",
+    "weights": [
+      "Hangeuljaemin4-Regular",
+      "index.json"
+    ],
+    "family": "Hangeuljaemin4.0",
+    "copyright": "Copyright (c) 2023 by Jae-gahb Park, Min Kim, Kyusun Lee, Huang-jia Chen, Ji-yeong Kim. All rights reserved.",
+    "cssDir": "/dist/Hangeuljaemin4-Regular"
+  },
+  {
+    "pkg": "hwmct",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "汇文明朝体"
+    ],
+    "family": "Huiwen-mincho",
+    "copyright": "Public Domain",
+    "cssDir": "/dist/汇文明朝体"
+  },
+  {
+    "pkg": "hyqzp",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "黄引齐招牌体"
+    ],
+    "family": "huangyinqi zhaopai",
+    "copyright": "copyrighy By huangyinqi 2012,http://www.huangyinqi.com",
+    "cssDir": "/dist/黄引齐招牌体"
+  },
+  {
+    "pkg": "jhlst",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "京華老宋体v1_007",
+      "京華老宋体v2_002"
+    ],
+    "family": "KingHwa_OldSong",
+    "copyright": "Font © Copyright 2022 TerryWang.All rights reserved.",
+    "cssDir": "/dist/京華老宋体v1_007"
+  },
+  {
+    "pkg": "jnjj",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "JUNJUN"
+    ],
+    "family": "荆南俊俊体",
+    "copyright": "(c) 2020 武汉光谷字造创意有限公司",
+    "cssDir": "/dist/JUNJUN"
+  },
+  {
+    "pkg": "jpdzt",
+    "version": "3.0.0",
+    "weights": [
+      "BoutiqueBitmap7x7_1_6",
+      "BoutiqueBitmap9x9_1_6",
+      "index.json"
+    ],
+    "family": "精品點陣體7×7 1.6",
+    "copyright": "[BoutiqueBitmap7x7] Copyright © 2022 字言字型 版權所有。 Copyright © 2022 fancy type foundry. All rights reserved. 2020-2021《字言字語》Cen-cyun, Liu. Luke Liu. https://fontspeech.blogspot.com/",
+    "cssDir": "/dist/BoutiqueBitmap7x7_1_6"
+  },
+  {
+    "pkg": "jxzk",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "江西拙楷"
+    ],
+    "family": "jiangxizhuokai",
+    "copyright": "",
+    "cssDir": "/dist/江西拙楷"
+  },
+  {
+    "pkg": "jyhpws",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "极影毁片文宋"
+    ],
+    "family": "极影毁片文宋 Medium",
+    "copyright": "極影毀片文宋 Medium",
+    "cssDir": "/dist/极影毁片文宋"
+  },
+  {
+    "pkg": "kksjt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "kuaikanshijieti20231213"
+    ],
+    "family": "快看世界体",
+    "copyright": "",
+    "cssDir": "/dist/kuaikanshijieti20231213"
+  },
+  {
+    "pkg": "lxgwmanhei",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "LXGWMarkerGothic"
+    ],
+    "family": "LXGW Marker Gothic",
+    "copyright": "Copyright 2021-2023 LXGW (https://github.com/lxgw/LxgwMarkerGothic)",
+    "cssDir": "/dist/LXGWMarkerGothic"
+  },
+  {
+    "pkg": "LxgwNeoZhiSong",
+    "error": "HTTP 404"
+  },
+  {
+    "pkg": "lxgwwenkai",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "LXGWWenKai-Light",
+      "LXGWWenKai-Medium",
+      "LXGWWenKai-Regular",
+      "LXGWWenKaiMono-Light",
+      "LXGWWenKaiMono-Medium",
+      "LXGWWenKaiMono-Regular"
+    ],
+    "family": "LXGW WenKai",
+    "copyright": "Copyright 2021-2025 LXGW (https://github.com/lxgw/LxgwWenKai)",
+    "cssDir": "/dist/LXGWWenKai-Regular"
+  },
+  {
+    "pkg": "lxgwwenkaibright",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "LXGWBright-Italic",
+      "LXGWBright-Light",
+      "LXGWBright-LightItalic",
+      "LXGWBright-Medium",
+      "LXGWBright-MediumItalic",
+      "LXGWBright-Regular"
+    ],
+    "family": "LXGW Bright",
+    "copyright": "Copyright (c) 2015 Ysabeau Project Authors (github.com/CatharsisFonts/Ysabeau)",
+    "cssDir": "/dist/LXGWBright-Regular"
+  },
+  {
+    "pkg": "lywkpmydb",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "LXGWWenKaiMonoScreen",
+      "LXGWWenKaiScreen"
+    ],
+    "family": "LXGW WenKai Mono Screen",
+    "copyright": "Copyright 2021-2024 LXGW (https://github.com/lxgw/LxgwWenKai-Screen)",
+    "cssDir": "/dist/LXGWWenKaiMonoScreen"
+  },
+  {
+    "pkg": "maple-mono-cn",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "MapleMono-CN-Bold",
+      "MapleMono-CN-BoldItalic",
+      "MapleMono-CN-ExtraBold",
+      "MapleMono-CN-ExtraBoldItalic",
+      "MapleMono-CN-ExtraLight",
+      "MapleMono-CN-ExtraLightItalic",
+      "MapleMono-CN-Italic",
+      "MapleMono-CN-Light",
+      "MapleMono-CN-LightItalic",
+      "MapleMono-CN-Medium",
+      "MapleMono-CN-MediumItalic",
+      "MapleMono-CN-Regular",
+      "MapleMono-CN-SemiBold",
+      "MapleMono-CN-SemiBoldItalic",
+      "MapleMono-CN-Thin",
+      "MapleMono-CN-ThinItalic"
+    ],
+    "family": "Maple Mono CN",
+    "copyright": "Copyright 2022 The Maple Mono Project Authors (https://github.com/subframe7536/maple-font)",
+    "cssDir": "/dist/MapleMono-CN-Regular"
+  },
+  {
+    "pkg": "mksjh",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "MaokenAssortedSans"
+    ],
+    "family": "MaokenAssortedSans",
+    "copyright": "Macintosh en FontFamilyName MaokenAssortedSans",
+    "cssDir": "/dist/MaokenAssortedSans"
+  },
+  {
+    "pkg": "mkwtyt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "MaoKenTangYuan"
+    ],
+    "family": "MaoKenTangYuan (beta)",
+    "copyright": "",
+    "cssDir": "/dist/MaoKenTangYuan"
+  },
+  {
+    "pkg": "mkzyt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "猫啃珠圆体"
+    ],
+    "family": "MaokenZhuyuanTi",
+    "copyright": "Copyright 2022-2023 LongZhuTi Project Authors. Copyright 2020 The RocknRoll Project Authors (https://github.com/fontworks-fonts/RocknRoll)",
+    "cssDir": "/dist/猫啃珠圆体"
+  },
+  {
+    "pkg": "moon-stars-kai",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "MoonStarsKai-Bold",
+      "MoonStarsKai-Light",
+      "MoonStarsKai-Regular",
+      "MoonStarsKaiHW-Bold",
+      "MoonStarsKaiHW-Light",
+      "MoonStarsKaiHW-Regular",
+      "MoonStarsKaiT-Bold",
+      "MoonStarsKaiT-Light",
+      "MoonStarsKaiT-Regular",
+      "MoonStarsKaiTHW-Bold",
+      "MoonStarsKaiTHW-Light",
+      "MoonStarsKaiTHW-Regular"
+    ],
+    "family": "月星楷",
+    "copyright": "Copyright 2023-2024 Moon Stars Kai Project Authors (https://github.com/GuiWonder/MoonStarsKai)",
+    "cssDir": "/dist/MoonStarsKai-Regular"
+  },
+  {
+    "pkg": "mzxst",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "MZPXflat",
+      "MZPXorig"
+    ],
+    "family": "MuzaiPixel",
+    "copyright": "Copyright (C) 2015-2021 Num Kadoma, 2022-2023 diaowinner.",
+    "cssDir": "/dist/MZPXflat"
+  },
+  {
+    "pkg": "pfgzt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "平方公子体"
+    ],
+    "family": "PING FANG GONG ZI TI",
+    "copyright": "版权平方造字中心所有",
+    "cssDir": "/dist/平方公子体"
+  },
+  {
+    "pkg": "pfljhfyt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "PingFangLaiJiangHuFeiYangTi-2"
+    ],
+    "family": "ÆÀ",
+    "copyright": "ÆÔ",
+    "cssDir": "/dist/PingFangLaiJiangHuFeiYangTi-2"
+  },
+  {
+    "pkg": "pfljhlyt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "平方赖江湖琅琊体"
+    ],
+    "family": "平方赖江湖琅琊体",
+    "copyright": "平方造字",
+    "cssDir": "/dist/平方赖江湖琅琊体"
+  },
+  {
+    "pkg": "pfmmd",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "平方萌萌哒"
+    ],
+    "family": "PING FANG MENG MNEG DA",
+    "copyright": "版权平方造字中心所有",
+    "cssDir": "/dist/平方萌萌哒"
+  },
+  {
+    "pkg": "pmzdxxt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "庞门正道细线体"
+    ],
+    "family": "PangMenZhengDao-XiXian",
+    "copyright": "(c) copyright PangMenZhengDao 2021",
+    "cssDir": "/dist/庞门正道细线体"
+  },
+  {
+    "pkg": "qtbfsxt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "千图笔锋手写体"
+    ],
+    "family": "qiantubifengshouxieti",
+    "copyright": "Copyright Shanghai PinTu Network Technology Co.,Ltd.",
+    "cssDir": "/dist/千图笔锋手写体"
+  },
+  {
+    "pkg": "qxs",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "quan"
+    ],
+    "family": "QuanPixel 8px",
+    "copyright": "(c) Galmuri8, Chill Bitmap, diaowinner, 2022. OFL",
+    "cssDir": "/dist/quan"
+  },
+  {
+    "pkg": "rmjzqpybxs",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "瑞美加张清平硬笔行书"
+    ],
+    "family": "Macintosh en FontSubfamilyName Regular",
+    "copyright": "Ramega",
+    "cssDir": "/dist/瑞美加张清平硬笔行书"
+  },
+  {
+    "pkg": "rzjkxzdmh",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "nzgrKangxi"
+    ],
+    "family": "nzgrKangxi",
+    "copyright": "copyrighy By nzgr 2021,http://www.runzhijia.art",
+    "cssDir": "/dist/nzgrKangxi"
+  },
+  {
+    "pkg": "rzjryzzk",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "nzgrRuYinZouZhangKai"
+    ],
+    "family": "nzgrRuYinZouZhangKai",
+    "copyright": "Copyright (c) 2023 nzgr",
+    "cssDir": "/dist/nzgrRuYinZouZhangKai"
+  },
+  {
+    "pkg": "scjssh",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "素材集市社会体"
+    ],
+    "family": "SuCaiJiShi-SheHuiTi",
+    "copyright": "Copyright (c) sucaijishi.com",
+    "cssDir": "/dist/素材集市社会体"
+  },
+  {
+    "pkg": "sft",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "随峰体"
+    ],
+    "family": "隨峰體",
+    "copyright": "cjkFonts x 阿坤",
+    "cssDir": "/dist/随峰体"
+  },
+  {
+    "pkg": "stdgt",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "上图东观体-常规",
+      "上图东观体-粗体",
+      "上图东观体-细体"
+    ],
+    "family": "STDongGuanTi",
+    "copyright": "(c) Shanghai Library (Institute of Scientific and Technical Information of Shanghai) owns the copyright",
+    "cssDir": "/dist/上图东观体-常规"
+  },
+  {
+    "pkg": "stmdxf",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "摄图摩登小方体"
+    ],
+    "family": "shetumodengxiaofangti",
+    "copyright": "____________",
+    "cssDir": "/dist/摄图摩登小方体"
+  },
+  {
+    "pkg": "syftjkt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "优设鲨鱼菲特健康体"
+    ],
+    "family": "YouSheShaYuFeiTeJianKangTi",
+    "copyright": "(c) Copyright Shandong Shark Fitter Health Technology Co.,Ltd.",
+    "cssDir": "/dist/优设鲨鱼菲特健康体"
+  },
+  {
+    "pkg": "sypxzs",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "思源屏显臻宋"
+    ],
+    "family": "Source Han Serif CN for Display",
+    "copyright": "Modified by chncwk",
+    "cssDir": "/dist/思源屏显臻宋"
+  },
+  {
+    "pkg": "syst",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "SourceHanSerifCN"
+    ],
+    "family": "Source Han Serif CN VF",
+    "copyright": "© 2017-2022 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'.",
+    "cssDir": "/dist/SourceHanSerifCN"
+  },
+  {
+    "pkg": "the-write-right-font",
+    "version": "2.0.0",
+    "weights": [
+      "index.json",
+      "the-write-right-font-2023_0401"
+    ],
+    "family": "The Write Right Font",
+    "copyright": "justfont Co., Ltd. / Fontworks Inc.",
+    "cssDir": "/dist/the-write-right-font-2023_0401"
+  },
+  {
+    "pkg": "tjl",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "Tiejili_Regular"
+    ],
+    "family": "Tiejili",
+    "copyright": "Copyright © 2022 Buernia (https://github.com/Buernia), with Reserved Font Name 'Tiejili' and '铁蒺藜'. Portions Copyright © 2020 The Reggae Project Authors (https://github.com/fontworks-fonts/Reggae).",
+    "cssDir": "/dist/Tiejili_Regular"
+  },
+  {
+    "pkg": "ToneOZ-Pinyin-Kai",
+    "error": "HTTP 404"
+  },
+  {
+    "pkg": "ToneOZ-Pinyin-WenKai",
+    "error": "HTTP 404"
+  },
+  {
+    "pkg": "ToneOZ-RadicalZ-Kai",
+    "error": "HTTP 404"
+  },
+  {
+    "pkg": "ToneOZ-Tsuipita",
+    "error": "HTTP 404"
+  },
+  {
+    "pkg": "XiaoheSimplify",
+    "error": "HTTP 404"
+  },
+  {
+    "pkg": "xiaolai",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "Xiaolai"
+    ],
+    "family": "小賴字體 SC",
+    "copyright": "Copyright © 2020 LXGW",
+    "cssDir": "/dist/Xiaolai"
+  },
+  {
+    "pkg": "xuandongkaishu",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "XuandongKaishu"
+    ],
+    "family": "XuandongKaishu",
+    "copyright": "Copyright 2018 The MaShanZheng Project Authors (https://github.com/googlefonts/mashanzheng)",
+    "cssDir": "/dist/XuandongKaishu"
+  },
+  {
+    "pkg": "yfxy",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "YuFanXinYu-Bold",
+      "YuFanXinYu-Light",
+      "YuFanXinYu-Medium",
+      "YuFanXinYu-Regular"
+    ],
+    "family": "YuFanXinYu",
+    "copyright": "Copyright (c) 2022, YuFan",
+    "cssDir": "/dist/YuFanXinYu-Regular"
+  },
+  {
+    "pkg": "yidianyan",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "yidianyan"
+    ],
+    "family": "I.Ngaan",
+    "copyright": "",
+    "cssDir": "/dist/yidianyan"
+  },
+  {
+    "pkg": "yozai",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "Yozai-Bold",
+      "Yozai-Light",
+      "Yozai-Medium",
+      "Yozai-Regular"
+    ],
+    "family": "Yozai",
+    "copyright": "Copyright (C) 2020 LXGW. Original Font Data Copyright (C) Y.OzVox.",
+    "cssDir": "/dist/Yozai-Regular"
+  },
+  {
+    "pkg": "yqt",
+    "version": "2.0.0",
+    "weights": [
+      "ChildFunSans-Demo",
+      "index.json"
+    ],
+    "family": "Child Fun Sans Demo",
+    "copyright": "Copyright 2023-2024 Des-Magmeta (https://github.com/Des-Magmeta/ChildFunSansFusion), Copyright 2020 The Stick Project Authors (https://github.com/fontworks-fonts/Stick/)",
+    "cssDir": "/dist/ChildFunSans-Demo"
+  },
+  {
+    "pkg": "ysbth",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "优设标题黑"
+    ],
+    "family": "YouSheBiaoTiHei",
+    "copyright": "(c) Copyright YouShe Network Technology Co., Ltd",
+    "cssDir": "/dist/优设标题黑"
+  },
+  {
+    "pkg": "ysbzt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "峄山碑篆体"
+    ],
+    "family": "峄山碑篆体",
+    "copyright": "",
+    "cssDir": "/dist/峄山碑篆体"
+  },
+  {
+    "pkg": "ysfxt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "Slidefu-Regular"
+    ],
+    "family": "Slidefu",
+    "copyright": "Copyright © 2019 by keynoteart x QiuYePPT. All rights reserved.",
+    "cssDir": "/dist/Slidefu-Regular"
+  },
+  {
+    "pkg": "ysyrxk",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "slideyouran-Regular2_0"
+    ],
+    "family": "slideyouran",
+    "copyright": "Copyright © 2020 by keynoteart x mengxiangyuan x QiuyePPT. All rights reserved.",
+    "cssDir": "/dist/slideyouran-Regular2_0"
+  },
+  {
+    "pkg": "yzgcxst",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "也字工厂小石头"
+    ],
+    "family": "YEFONTXiaoShiTou",
+    "copyright": "(c) Copyright Shenzhen YiPin Information Technology Co., Ltd",
+    "cssDir": "/dist/也字工厂小石头"
+  },
+  {
+    "pkg": "yzklct",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "有字库龙藏体"
+    ],
+    "family": "Long Cang",
+    "copyright": "Copyright 2018 The LongCang Project Authors (https://github.com/googlefonts/longcang)",
+    "cssDir": "/dist/有字库龙藏体"
+  },
+  {
+    "pkg": "zhbtt",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "字魂扁桃体"
+    ],
+    "family": "zihunbiantaoti",
+    "copyright": "Copyright Shanghai ZiHun Network Technology Co.,Ltd.",
+    "cssDir": "/dist/字魂扁桃体"
+  },
+  {
+    "pkg": "zjmc",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "装甲明朝体"
+    ],
+    "family": "SoukouMincho",
+    "copyright": "Adobe Systems Incorporated",
+    "cssDir": "/dist/装甲明朝体"
+  },
+  {
+    "pkg": "zkxw",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "站酷小薇LOGO体_猫啃网"
+    ],
+    "family": "xiaowei",
+    "copyright": "±Ö¿âËùÓ",
+    "cssDir": "/dist/站酷小薇LOGO体_猫啃网"
+  },
+  {
+    "pkg": "zlmyz",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "逐浪萌芽字"
+    ],
+    "family": "ZoomlaMengyas-A080",
+    "copyright": "Copyright © 2006-2021 Zoomla!CMS Corporation. All rights reserved.",
+    "cssDir": "/dist/逐浪萌芽字"
+  },
+  {
+    "pkg": "zqfs",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "ZhuqueFangsong-Regular"
+    ],
+    "family": "Zhuque Fangsong (technical preview)",
+    "copyright": "Copyright 2023 JadeFoci",
+    "cssDir": "/dist/ZhuqueFangsong-Regular"
+  },
+  {
+    "pkg": "zqzmxs",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "钟齐志莽行书"
+    ],
+    "family": "Zhi Mang Xing",
+    "copyright": "Copyright 2018 The ZhiMangXing Project Authors (https://github.com/googlefonts/zhimangxing)",
+    "cssDir": "/dist/钟齐志莽行书"
+  },
+  {
+    "pkg": "zzqxmxht",
+    "version": "3.0.0",
+    "weights": [
+      "index.json",
+      "字制区喜脉喜欢体"
+    ],
+    "family": "FontQu Smile __",
+    "copyright": "©Copyright(c)探火（深圳）品牌策划有限公司",
+    "cssDir": "/dist/字制区喜脉喜欢体"
+  }
+]

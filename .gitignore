@@ -1,0 +1,17 @@
+# 渲染缓存（字体/浏览器 profile，可随时删）
+_render-cache/
+
+# agent 工作区记忆（本地工作用，不对外）
+.workbuddy/
+
+# 依赖与系统文件
+node_modules/
+.DS_Store
+Thumbs.db
+
+# 安装器生成的旧版本备份
+*.bak-*
+
+# 编辑器
+.vscode/
+.idea/

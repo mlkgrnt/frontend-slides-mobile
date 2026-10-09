@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>卡片 Deck 模板</title>
+<!--
+  ============================================================
+  移动端卡片 Deck 模板（frontend-slides-mobile）
+  ------------------------------------------------------------
+  用法：
+  1. 【风格层】替换下面 [2] 区的 :root 变量（来自 style-presets.md /
+     bold-styles.md 的色板与字体）——这是唯一"必改"的地方。
+  2. 【卡片】在 <body> 里增删 <section class="card" data-index="N">。
+     布局骨架参考 layout-patterns.md 的 12 种模式。
+  3. 【渲染】node scripts/render.mjs 本文件
+  ------------------------------------------------------------
+  注意：
+  - 卡片尺寸固定（.card），不做响应式；改画布改 --card-w/h 与 --u。
+  - 截图模式：URL 加 ?p=N 只显示第 N 张（渲染脚本自动使用）。
+  - 打印模式：按 @page 一页一卡（打印脚本自动使用）。
+  - 不使用入场动画（渲染为静态画面，元素必须静态即终态）。
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============ [1] 舞台与画布（改画布只动这一段） ============ */
+:root {
+  --card-w: 1080px;          /* 3:4 → 1080×1440；9:16 → 1080×1920；1:1 → 1080×1080 */
+  --card-h: 1440px;
+  --u: 1;                    /* 单位系数 = 画布宽 / 1080（16:9 时 = 1.7778） */
+  /* 字号阶梯（1080 宽基准，乘 --u 适配其它宽度） */
+  --fs-display: calc(118px * var(--u));
+  --fs-h1:      calc(74px  * var(--u));
+  --fs-h2:      calc(52px  * var(--u));
+  --fs-body:    calc(38px  * var(--u));
+  --fs-body-sm: calc(32px  * var(--u));
+  --fs-meta:    calc(25px  * var(--u));
+  --fs-num:     calc(140px * var(--u));
+  --pad: calc(96px * var(--u));      /* 安全区边距 */
+}
+
+/* ============ [2] 风格层（示例：Vellum 深蓝独幕 —— 生成时整体替换） ============ */
+:root {
+  --bg: #2A3870;             /* 画布底色 */
+  --bg-deep: #1F2858;        /* 深一档的同族色（装饰用） */
+  --fg: #E8D85C;             /* 主文字色 */
+  --fg-dim: rgba(232,216,92,0.62);
+  --accent: #3A7878;         /* 强调/点缀色 */
+  --emphasis: #F5E168;       /* 强调文字的亮版本 */
+  --hairline: rgba(232,216,92,0.22);
+  --font-display: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
+  --font-body: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "Space Grotesk", "Noto Sans SC", monospace;
+}
+
+/* ============ [3] 基础与文字角色 ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: #555; }
+body { font-family: var(--font-body); }
+
+/* 多卡模式（预览/编辑用）：纵向堆叠 */
+body.multi { display: flex; flex-direction: column; align-items: center; gap: 48px; padding: 48px 0; }
+
+/* 单卡模式（截图用）：只显示一张卡 */
+body.single { background: transparent; }
+body.single .card { display: none; }
+body.single .card.active { display: flex; }
+
+.card {
+  width: var(--card-w);
+  height: var(--card-h);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--fg);
+}
+.pad { padding: var(--pad); flex: 1; display: flex; flex-direction: column; }
+.pad.mid { justify-content: center; }
+.pad.between { justify-content: space-between; }
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.display  { font-family: var(--font-display); font-size: var(--fs-display); line-height: 1.22; font-weight: 500; }
+.h1       { font-family: var(--font-display); font-size: var(--fs-h1); line-height: 1.32; font-weight: 700; }
+.h2       { font-family: var(--font-display); font-size: var(--fs-h2); line-height: 1.4;  font-weight: 700; }
+.body     { font-size: var(--fs-body); line-height: 1.72; }
+.body-sm  { font-size: var(--fs-body-sm); line-height: 1.68; }
+.meta     { font-family: var(--font-mono); font-size: var(--fs-meta); letter-spacing: 0.14em; color: var(--fg-dim); }
+.sub      { color: rgba(232,216,92,0.82); margin-top: 56px; }
+em        { font-style: normal; color: var(--emphasis); }
+
+/* 页脚：全 deck 统一基线 */
+.card-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: calc(40px * var(--u)) var(--pad) calc(52px * var(--u));
+}
+
+/* ============ [4] 组件（按 layout-patterns.md 选用） ============ */
+/* 要点列表 */
+.bullets { list-style: none; display: flex; flex-direction: column; gap: calc(42px * var(--u)); margin-top: calc(64px * var(--u)); }
+.bullets li { font-size: var(--fs-body); line-height: 1.7; padding-left: calc(54px * var(--u)); position: relative; }
+.bullets li::before {
+  content: ""; position: absolute; left: 0; top: calc(0.62em - 12px * var(--u));
+  width: calc(24px * var(--u)); height: calc(24px * var(--u));
+  background: var(--accent); transform: rotate(45deg);
+}
+.bullets strong { color: var(--emphasis); }
+
+/* 大序号 / 数据数字 */
+.big-num, .stat-num {
+  font-family: var(--font-display); font-size: var(--fs-num); line-height: 1;
+  color: var(--accent); opacity: 0.65;
+}
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: calc(56px * var(--u)); margin-top: calc(72px * var(--u)); }
+
+/* 对比两栏 */
+.compare { display: flex; flex-direction: column; gap: calc(36px * var(--u)); margin-top: calc(64px * var(--u)); }
+.compare .side { border: 1px solid var(--hairline); border-radius: calc(20px * var(--u)); padding: calc(40px * var(--u)); }
+
+/* 步骤 */
+.steps { list-style: none; display: flex; flex-direction: column; gap: calc(40px * var(--u)); margin-top: calc(64px * var(--u)); }
+.steps li { display: flex; gap: calc(32px * var(--u)); align-items: baseline; font-size: var(--fs-body); line-height: 1.7; }
+.steps .step-n { font-family: var(--font-mono); font-size: var(--fs-h2); color: var(--accent); }
+
+/* 引用 */
+.quote-mark { font-family: var(--font-display); font-size: calc(220px * var(--u)); line-height: 0.6; color: var(--accent); opacity: 0.35; }
+blockquote { font-family: var(--font-display); font-size: calc(56px * var(--u)); line-height: 1.55; margin: calc(48px * var(--u)) 0; }
+
+/* 清单勾选 */
+.checklist { list-style: none; display: flex; flex-direction: column; gap: calc(38px * var(--u)); margin-top: calc(64px * var(--u)); }
+.checklist li { display: flex; gap: calc(28px * var(--u)); align-items: flex-start; font-size: var(--fs-body); line-height: 1.6; }
+.checklist .box {
+  width: calc(40px * var(--u)); height: calc(40px * var(--u)); flex: none; margin-top: calc(8px * var(--u));
+  border: 3px solid var(--accent); display: inline-flex; align-items: center; justify-content: center;
+  font-size: calc(26px * var(--u));
+}
+
+/* 装饰容器（几何/光斑等统一放这里，便于整体控制） */
+.orn { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.orn .ring {
+  position: absolute; width: calc(460px * var(--u)); height: calc(460px * var(--u));
+  border: 2px solid var(--hairline); border-radius: 50%;
+}
+
+/* ============ [5] 打印模式（PDF 导出；一页一卡） ============ */
+@page { size: var(--card-w) var(--card-h); margin: 0; }
+@media print {
+  html, body { background: #fff; }
+  body.multi { display: block; padding: 0; gap: 0; }
+  .card { break-inside: avoid; break-after: page; }
+  .card:last-child { break-after: auto; }
+}
+</style>
+</head>
+<body class="multi">
+
+  <!-- ======== 卡 1 · 封面（cover）======== -->
+  <section class="card" data-index="1">
+    <div class="orn">
+      <div class="ring" style="right: calc(-140px * var(--u)); top: calc(-140px * var(--u));"></div>
+      <div class="ring" style="right: calc(-80px * var(--u)); top: calc(-80px * var(--u)); width: calc(340px * var(--u)); height: calc(340px * var(--u));"></div>
+    </div>
+    <div class="pad mid" style="align-items: center; text-align: center;">
+      <div class="kicker">MOBILE CARDS</div>
+      <h1 class="display" style="margin-top: calc(56px * var(--u));">把内容变成<br><em>手机一屏</em>的<br>知识卡片</h1>
+      <p class="body-sm sub">零依赖渲染管线 · 输出 PDF 与图片组</p>
+    </div>
+    <div class="card-foot">
+      <span class="meta">封面</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+  <!-- ======== 卡 2 · 要点（bullets）======== -->
+  <section class="card" data-index="2">
+    <div class="pad">
+      <div class="kicker">原则</div>
+      <h2 class="h1" style="margin-top: calc(40px * var(--u));">移动端排版的<br>三条硬规则</h2>
+      <ul class="bullets">
+        <li><strong>一屏一个观点</strong>　—— 每张卡片只讲一件事，超出就拆卡。</li>
+        <li><strong>字号优先</strong>　—— 正文不小于 32px，不为塞内容缩小字号。</li>
+        <li><strong>静态终态</strong>　—— 装饰不依赖动画，截图即为成品。</li>
+      </ul>
+    </div>
+    <div class="card-foot">
+      <span class="meta">核心原则</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+  <!-- ======== 卡 3 · 收尾（closer）======== -->
+  <section class="card" data-index="3">
+    <div class="pad mid" style="align-items: center; text-align: center;">
+      <h2 class="h1">开始做第一组卡片</h2>
+      <p class="body-sm sub">渲染 → 检查 → 交付 PDF 与图片</p>
+    </div>
+    <div class="card-foot">
+      <span class="meta">END</span>
+      <span class="meta"><span data-pg></span> / <span data-pg-total></span></span>
+    </div>
+  </section>
+
+<script>
+(function () {
+  // 自动页码：每张卡按顺序填 data-pg / data-pg-total
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card[data-index]'));
+  var pad2 = function (n) { return String(n).padStart(2, '0'); };
+  cards.forEach(function (c, i) {
+    var pg = c.querySelector('[data-pg]');
+    if (pg) pg.textContent = pad2(i + 1);
+  });
+  document.querySelectorAll('[data-pg-total]').forEach(function (el) {
+    el.textContent = pad2(cards.length);
+  });
+
+  // 单卡模式：?p=N 只显示第 N 张（渲染脚本使用）
+  var params = new URLSearchParams(location.search);
+  var n = parseInt(params.get('p'), 10);
+  if (n > 0) {
+    document.body.className = 'single';
+    var target = document.querySelector('.card[data-index="' + n + '"]');
+    if (target) target.classList.add('active');
+  }
+})();
+</script>
+</body>
+</html>
